@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
@@ -22,8 +24,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //web = (WebView)findViewById(R.id.web);
         //btnWC = (ImageButton)findViewById(R.id.btnWC);
-
+        setTheme(R.style.AppTheme);
+        setTitle("Car'A'Van");
         setContentView(R.layout.activity_main);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.messenger:
+                return true;
+            case R.id.alertes:
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.comptes:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onClick(View v) throws IOException {
